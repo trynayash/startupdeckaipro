@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom blue palette */
+  --midnight-blue: hsl(207, 75%, 33%);
+  --dark-blue: hsl(207, 73%, 16%);
+  --primary-blue: hsl(199, 69%, 48%);
+  --baby-blue: hsl(199, 53%, 80%);
+  --glass-white: hsla(0, 0%, 100%, 0.1);
+  --glass-blue: hsla(199, 69%, 48%, 0.1);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-inter antialiased bg-dark-blue text-white;
+  }
+  
+  /* Premium background */
+  .hero-background {
+    background: linear-gradient(135deg, #0c2d48 0%, #145da0 30%, #2e8bc0 60%, #b1d4e0 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+  }
+  
+  .hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/src/assets/backgrounds/startup-hero-bg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    z-index: 1;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+@layer utilities {
+  .font-sora {
+    font-family: 'Sora', sans-serif;
+  }
+  
+  /* Responsive container with better mobile spacing */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+  }
+  
+  /* Responsive text sizes */
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+  
+  .text-responsive-md {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+  
+  /* Responsive spacing */
+  .section-padding {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+  
+  /* Responsive grids */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  /* Mobile-first buttons */
+  .btn-responsive {
+    @apply px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4;
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  /* Responsive cards */
+  .card-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+    @apply rounded-lg sm:rounded-xl lg:rounded-2xl;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    @apply block py-3 px-4 text-base font-medium border-b border-gray-700 last:border-b-0;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .text-midnight-blue {
+    color: var(--midnight-blue);
+  }
+  
+  .text-dark-blue {
+    color: var(--dark-blue);
+  }
+  
+  .text-primary-blue {
+    color: var(--primary-blue);
+  }
+  
+  .text-baby-blue {
+    color: var(--baby-blue);
+  }
+  
+  .bg-midnight-blue {
+    background-color: var(--midnight-blue);
+  }
+  
+  .bg-dark-blue {
+    background-color: var(--dark-blue);
+  }
+  
+  .bg-primary-blue {
+    background-color: var(--primary-blue);
+  }
+  
+  .bg-baby-blue {
+    background-color: var(--baby-blue);
+  }
+  
+  .bg-gradient-main {
+    background: linear-gradient(135deg, var(--midnight-blue) 0%, var(--primary-blue) 50%, var(--baby-blue) 100%);
+  }
+  
+  .bg-gradient-dark {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--midnight-blue) 100%);
+  }
+  
+  .bg-gradient-light {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--baby-blue) 100%);
+  }
+  
+  .glass-morphism {
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-morphism-blue {
+    background: var(--glass-blue);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(46, 139, 192, 0.2);
+  }
+  
+  .hero-background {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--midnight-blue) 50%, var(--primary-blue) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  .mesh-bg {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(46, 139, 192, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(177, 212, 224, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(20, 93, 160, 0.05) 0%, transparent 50%);
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulseGlow 2s infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(46, 139, 192, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(46, 139, 192, 0.8); }
+}
